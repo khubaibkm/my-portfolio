@@ -1,21 +1,1381 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* ---------------------------------------------
+   IMPORT FONTS
+--------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;800;900&display=swap');
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+
+/* ---------------------------------------------
+   GLOBAL RESETS & BASE STYLES
+--------------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "montserrat";
+  color: white;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+*::selection {
+  color: #addc2f;
+  background-color: white;
+}
+
+body::-webkit-scrollbar {
+  display: block;
+  width: 8px;
+  background-color: #addc2f;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: white;
+  border-radius: 30px;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  touch-action: pan-x pan-y;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+  scroll-behavior: smooth;
+  background-color: black;
+}
+
+
+/* ---------------------------------------------
+   CUSTOM CURSOR STYLES
+--------------------------------------------- */
+#cursor {
+  height: 20px;
+  width: 20px;
+  background-color: #addc2f;
+  border-radius: 100%;
+  position: fixed;
+  z-index: 99;
+}
+
+#cursor-blur {
+  height: 400px;
+  width: 400px;
+  background-color: #aedc2f3e;
+  border-radius: 100%;
+  position: fixed;
+  filter: blur(60px);
+  z-index: 9;
+}
+
+
+/* ---------------------------------------------
+   NAVIGATION BAR
+--------------------------------------------- */
+#nav {
+  height: 120px;
+  width: 100%;
+  padding: 20px 150px;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  gap: 50px;
+  z-index: 999; /* ensure nav is above other elements */
+  top: 0;
+  left: 0;
+  justify-content: flex-start;
+}
+
+/* Desktop NavLinks (visible above 1300px) */
+#navlinks {
+  display: flex;
+  gap: 50px;
+}
+
+/* Desktop nav link styling */
+#navlinks a {
+  color: white;
+  text-transform: uppercase;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all ease-out 0.3s;
+}
+
+#navlinks a:hover {
+  color: #addc2f;
+  scale: 1.2;
+  transition: all ease-out 0.3s;
+}
+
+/* The nav logo */
+#nav img {
+  height: 200px;
+  flex-shrink: 0;
+}
+
+.resume {
+  color: #c6ff2a !important;
+  font-weight: 800 !important;
+}
+
+
+/* ---------------------------------------------
+   HAMBURGER MENU (shown below 1300px)
+--------------------------------------------- */
+/* Hidden by default; we show it at (max-width: 1300px). */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+  cursor: pointer;
+  margin-left: auto; /* pushes hamburger to the right */
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  background: white;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* Mobile nav container (hidden by default, toggled via JS) */
+/* Slide-in menu from the right */
+#mobileNavLinks {
+  position: fixed;
+  top: 8rem;
+  right: 0;
+  /* full height menu */
+  width: 250px;         /* or 300px, as you like */
+  height: 60vh;
+  border-radius: 12px 0 0 12px;
+  
+  /* background / style */
+  background: linear-gradient(30deg, rgb(41, 41, 41) 0%, rgb(137, 137, 137) 100%);
+  padding: 40px 20px;   /* some spacing */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  
+  /* initially hidden by transform */
+  transform: translateX(100%); /* off-screen to the right */
+  transition: transform 0.4s ease; 
+  z-index: 9999;
+}
+
+#mobileNavLinks a {
+  font-size: 16px;
+  padding: 10px;
+  white-space: nowrap;
+  color: white;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+#mobileNavLinks a:hover {
+  color: #addc2f;
+}
+
+/* When .showMenu is added by JS, slide in */
+#mobileNavLinks.showMenu {
+  transform: translateX(0);
+}
+
+/* transform hamburger into X */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+.menu-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* covers the whole screen */
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5); /* or 0.7 for darker */
+  z-index: 9998;                 /* just behind #mobileNavLinks */
+  display: none;                 /* hidden by default */
+}
+
+/* Show the backdrop when menu is open */
+.menu-backdrop.showBackdrop {
+  display: block;
+}
+
+
+/* ---------------------------------------------
+   MAIN CONTAINER
+--------------------------------------------- */
+#main {
+  position: relative;
+}
+
+
+/* ---------------------------------------------
+   PAGE 1
+--------------------------------------------- */
+#page1 {
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(15deg, rgb(41, 41, 41) 0%, rgb(137, 137, 137) 100%);
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  text-align: left;
+  z-index: 10;
+}
+
+#page1 h1 {
+  font-size: 100px;
+  font-weight: 900;
+  text-transform: uppercase;
+  width: 50%;
+  position: relative;
+  margin-top: 122px;
+  margin-left: 155px;
+}
+
+#page1 h1::before {
+  content: "hey, I am khubaib Ahmad.";
+  text-transform: uppercase;
+  position: absolute;
+  color: black;
+  top: -4px;
+  left: -4px;
+  -webkit-text-stroke: 2px #addc2f;
+  z-index: -1;
+}
+
+#page1 h2 {
+  font-size: 30px;
+  font-weight: 800;
+  margin: 10px 0 20px 0;
+  margin-left: 155px;
+}
+
+#page1 p {
+  font-size: 20px;
+  font-weight: 300;
+  width: 40%;
+  margin-left: 155px;
+}
+
+#arr {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+#arrow {
+  height: 180px;
+  width: 180px;
+  border: 2px solid #addc2f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all ease 0.5s;
+  margin-left: -35%;
+  margin-bottom: 0%;
+}
+
+#arrow:hover {
+  scale: 0.8;
+  background-color: #addc2f;
+  cursor: pointer;
+}
+
+#arrow i {
+  font-size: 50px;
+}
+
+#mypic {
+  position: absolute;
+  top: 6rem;
+  right: 2rem;
+  left: 65rem !important;
+  height: 88%;
+  background-image: url('/images/mypic.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+
+/* ---------------------------------------------
+   PAGE 2
+--------------------------------------------- */
+#page2 {
+  height: 300vh;
+  width: 100%;
+  z-index: 10;
+  margin-bottom: 20rem;
+}
+
+#scroller {
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  position: relative;
+  z-index: 10;
+  top: 6rem;
+}
+
+#scroller::-webkit-scrollbar {
+  display: none;
+}
+
+#scroller1 {
+  display: inline-block;
+  white-space: nowrap;
+  animation: scroll;
+  animation-duration: 35s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+#scroller h4 {
+  display: inline-block;
+  font-size: 140px;
+  font-weight: 900;
+  margin-right: 10px;
+  color: transparent;
+  transition: all linear 0.4s;
+  color: black;
+  -webkit-text-stroke: 2px white;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#scroller1 h4:hover {
+  color: #addc2f;
+  -webkit-text-stroke: 2px #addc2f;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+#about-me {
+  height: 40vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 0px;
+  padding-top: 5rem;
+}
+
+#aboutin {
+  width: 70%;
+  text-align: center;
+}
+
+#aboutin h3 {
+  font-size: 55px;
+  font-weight: 800;
+  margin: 200px 0 40px 0;
+}
+
+#aboutin p {
+  font-size: 22px;
+  line-height: 35px;
+  text-align: justify;
+}
+
+.skills {
+  margin: 0;
+  padding: 0 200px;
+  position: relative;
+  top: 3rem;
+}
+
+.skills h2 {
+  font-size: 55px;
+  text-align: center;
+  margin-bottom: 60px;
+  margin-top: 200px;
+}
+
+.skill {
+  margin-bottom: 10px;
+}
+
+.skill-name {
+  font-weight: 500;
+  margin-bottom: 10px;
+  font-size: 22px;
+}
+
+.skill-bar {
+  height: 25px;
+  background-color: white;
+  border-radius: 30px;
+  margin-bottom: 45px;
+  overflow: hidden;
+  position: relative;
+}
+
+.skill-level {
+  height: 100%;
+  background: linear-gradient(90deg, #addc2f 0%, #5eae22 120%);
+  border-radius: 50px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  transition: width 5s ease;
+}
+
+#education {
+  height: 40vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  padding: 0 50px;
+  padding-bottom: 5rem;
+}
+
+#education h2 {
+  font-size: 55px;
+  font-weight: 800;
+  margin: 250px 0 100px 0;
+}
+
+#college,
+#school {
+  width: 50%;
+  text-align: center;
+  margin-top: 0rem;
+}
+
+#college h3,
+#school h3 {
+  font-size: 35px;
+  font-weight: 800;
+  margin: 0px 0 20px 0;
+  text-align: left;
+}
+
+#college p,
+#school p {
+  font-size: 22px;
+  line-height: 35px;
+  text-align: left;
+}
+
+
+/* ---------------------------------------------
+   PAGE 3 (PROJECTS)
+--------------------------------------------- */
+#page3 {
+  height: 240vh;
+  width: 100%;
+  z-index: 10;
+  background-color: black;
+  margin-top: 10rem;
+}
+
+#page3 h2 {
+  font-size: 55px;
+  font-weight: 800;
+  text-align: center;
+  position: relative;
+  top: 8rem;
+}
+
+#cards-container {
+  height: 60vh;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  margin-top: 150px;
+  position: relative;
+  z-index: 10;
+}
+
+.card {
+  height: 80%;
+  width: 28%;
+  margin-top: 60px;
+  border-radius: 20px;
+  background-color: #addc2f;
+  overflow: hidden;
+  transition: all ease 0.6s;
+}
+
+/* project backgrounds */
+#card1 {
+  background-image: url('/images/projects/proj1.png');
+  background-position: center;
+  background-size: cover;
+}
+#card2 {
+  background-image: url('/images/projects/proj2.png');
+  background-position: center;
+  background-size: cover;
+}
+#card3 {
+  background-image: url('/images/projects/proj3.png');
+  background-position: center;
+  background-size: cover;
+}
+#card4 {
+  background-image: url('/images/projects/proj4.jpeg');
+  background-position: center;
+  background-size: cover;
+}
+#card5 {
+  background-image: url('/images/projects/proj5.png');
+  background-position: center;
+  background-size: cover;
+}
+#card6 {
+  background-image: url('/images/projects/proj6.png');
+  background-position: center;
+  background-size: cover;
+}
+#card7 {
+  background-image: url('/images/projects/proj7.png');
+  background-position: left;
+  background-size: cover;
+}
+#card8 {
+  background-image: url('/images/projects/proj8.png');
+  background-position: left;
+  background-size: cover;
+}
+
+.overlay {
+  height: 100%;
+  width: 100%;
+  background-color: #addc2f;
+  padding: 30px;
+  padding-top: 80px;
+  border-radius: 20px;
+  opacity: 0;
+  transition: all ease 0.6s;
+}
+
+.overlay h4 {
+  font-size: 38px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  font-weight: 800;
+}
+
+.overlay a {
+  color: black;
+  text-decoration: none;
+  transition: all ease-out 0.5s;
+}
+
+.overlay a:hover {
+  color: white;
+}
+
+.overlay p {
+  color: black;
+  font-size: 18px;
+}
+
+.card:hover .overlay {
+  opacity: 1;
+}
+
+.card:hover {
+  transform: rotate3d(-1, 1, 0, 20deg) !important;
+  cursor: default;
+}
+
+#green-div {
+  height: 45vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to right top, #c6ff2a, #30ab15);
+  justify-content: space-between;
+  margin-top: 600px;
+}
+
+#green-div h4 {
+  width: 45%;
+  color: black;
+  line-height: 50px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+#green-div img {
+  height: 100%;
+  object-fit: cover;
+  width: 11%;
+}
+
+
+/* ---------------------------------------------
+   PAGE 4 (ACHIEVEMENTS)
+--------------------------------------------- */
+#page4 {
+  height: 115vh;
+  width: 100%;
+  z-index: 10;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#page4 h4 {
+  text-transform: uppercase;
+  font-size: 55px;
+  font-weight: 800;
+  text-align: center;
+  position: relative;
+  top: -8rem;
+}
+
+#page4 > p {
+  font-size: 35px;
+  font-weight: 800;
+  width: 60%;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  line-height: 1.4;
+}
+
+
+
+#page4 img {
+  position: absolute;
+  height: 60px;
+}
+
+#colon1 {
+  left: 12%;
+  bottom: 14%;
+}
+
+#colon2 {
+  bottom: 8%;
+  right: 14%;
+}
+
+
+/* ---------------------------------------------
+   FOOTER
+--------------------------------------------- */
+#footer {
+  height: 40vh;
+  width: 100%;
+  background: linear-gradient(to right top, #c6ff2a, #30ab15);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 150px;
+  padding: 0 100px;
+  overflow-x: hidden;
+}
+
+#footer > img {
+  position: absolute;
+  left: 0;
+  height: 90%;
+}
+
+#f1,
+#f2,
+#f3,
+#f4 {
+  width: fit-content;
+  position: relative;
+  z-index: 100;
+}
+
+#f1 h3 {
+  height: 200px;
+  font-size: 48px;
+  font-weight: 800;
+}
+
+#footer i {
+  color: black;
+  font-weight: 500;
+}
+
+#f2 h3,
+#f3 h3 {
+  font-size: 30px;
+  text-transform: uppercase;
+  color: black;
+  font-weight: 900;
+  margin-bottom: 25px;
+}
+
+#f2 a,
+#f3 a {
+  text-decoration: none;
+  color: black;
+}
+
+#f2 a:hover,
+#f3 a:hover {
+  color: white;
+}
+
+#f4 h4 {
+  font-size: 18px;
+  text-transform: uppercase;
+  color: black;
+  font-weight: 600;
+  line-height: 25px;
+  margin-bottom: 8px;
+}
+
+#f4 a {
+  text-decoration: none;
+  font-weight: 800;
+  color: #d2ff56;
+  font-size: 22px;
+}
+
+#f4 a:hover {
+  color: white;
+  transition: all ease-out .3s;
+}
+
+
+/* ---------------------------------------------
+   RESPONSIVE / MEDIA QUERIES
+--------------------------------------------- */
+
+/* ================================
+   1) HAMBURGER LOGIC at <= 1300px
+   ================================ */
+@media only screen and (max-width: 1300px) {
+  /* Hide desktop navlinks */
+  #navlinks {
+    display: none;
+  }
+  /* Show hamburger */
+  .hamburger {
+    display: flex;
+  }
+
+  /* optional: adjust nav, hide resume, etc. */
+  #nav {
+    padding: 0 150px;
+  }
+  #nav img {
+    height: 120px;
+  }
+  .resume {
+    display: none;
+  }
+  .contact {
+    display: none;
+  }
+  .achievements {
+    display: none;
+  }
+  #mypic {
+    left: 38rem !important;
+  }
+}
+
+/* MAX-WIDTH: 768px (text scaling, etc.) */
+@media only screen and (max-width: 800px) {
+  body {
+    font-size: 14px;
+  }
+  #mypic {
+    display: none;
+  }
+  #nav {
+    padding: 0 50px;
+  }
+  #nav img {
+    height: 120px;
+  }
+  .resume {
+    display: none;
+  }
+  .contact {
+    display: none;
+  }
+  .achievements {
+    display: none;
+  }
+  #page1 h1 {
+    font-size: 75px;
+    position: relative;
+    right: 5rem;
+    bottom: 4rem;
+  }
+  #page1 h2 {
+    font-size: 26px;
+    position: relative;
+    right: 5rem;
+    bottom: 4rem;
+  }
+  #page1 p {
+    width: 70%;
+    position: relative;
+    right: 5rem;
+    bottom: 4rem;
+  }
+  #about-me {
+    height: 60vh;
+    padding: 0 1px;
+  }
+  #aboutin { 
+    width: 90%;
+  }
+  #scroller h4 {
+    font-size: 100px;
+    font-weight: 900;
+    margin-right: 10px;
+    -webkit-text-stroke: 1px white;
+    margin-bottom: 15px;
+    position: relative;
+    bottom: -2rem;
+  }
+
+  .skills {
+    padding: 0 50px;
+  }
+  #education {
+    padding: 0 50px;
+  }
+  #education h2 {
+    margin-bottom: 5rem;
+  }   
+  #college {
+    width: 75%;
+  }
+
+  #school {
+    width: 75%;
+    margin-top: 2rem;
+  } 
+
+  .card {
+    height: 55%;
+    width: 45%;
+  }
+  .card:hover {
+    transform: none !important;
+  }
+  .overlay h4 {
+    font-size: 25px !important;
+  }
+  
+  #green-div {
+    margin-top: 800px;
+  }
+  #green-div h4 {
+    font-size: 24px;
+    line-height: 40px;
+  }
+  #green-div img {
+    width: 15%;
+  }
+  #page4 {
+    height: 70vh;
+    margin-top: -5rem;
+  }
+  #page4 h4 {
+    font-size: 45px;
+  }
+  #page4 p {
+    font-size: 24px;
+    width: 80%;
+  }
+  #page4 #colon1 {
+    bottom: 14.5% !important;
+  }
+  #page4 #colon2 {
+    bottom: 9% !important;
+  }
+  #footer {
+    height: 65vh;
+    padding: 10px;
+    gap: 15px;
+    padding: 20px 0 0 50px;
+    flex-direction: column;
+    align-items: start;
+  }
+  #footer > img {
+    height: 50%;
+  }
+  #f1 h3 {
+    font-size: 52px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  #f2 h3,
+  #f3 h3 {
+    font-size: 25px;
+    margin-bottom: 15px;
+  }
+  #f4 h4 {
+    font-size: 20px;
+    line-height: 20px;
+  }
+  #f4 a {
+    font-size: 22px;
+    color: #30ab15;
+  }
+}
+
+/* MAX-HEIGHT: 815px AND MAX-WIDTH: 500px */
+@media only screen and (max-height: 815px) and (max-width: 500px) {
+  #page1 {
+    height: 120vh;
+  }
+  #about-me {
+    height: 80vh !important;
+  }
+  #education {
+    height: 50vh !important;
+  }
+  #page2 {
+    height: 350vh;
+  }
+  #page3 {
+    height: 440vh !important;
+  }
+  #green-div {
+    margin-top: 2500px !important;
+  }
+  #about-me h3 {
+    font-size: 40px !important;
+  }
+  #about-me {
+    margin-top: -35rem !important;
+  }
+  .overlay p {
+    font-size: 16px;
+  }
+  #page4 {
+    height: 100vh !important;
+  }
+  #page4 p {
+    width: 65% !important;
+  }
+  #page4 #colon1 {
+    bottom: 13.3% !important;
+  }
+  #page4 #colon2 {
+    bottom: 8% !important;
+  }
+}
+
+/* MAX-HEIGHT: 700px AND MAX-WIDTH: 500px */
+@media only screen and (max-height: 700px) and (max-width: 500px) {
+  #page1 {
+    height: 120vh !important;
+  }
+  #about-me {
+    height: 80vh !important;
+  }
+  #education {
+    height: 60vh !important;
+  }
+  #page2 {
+    height: 400vh;
+  }
+  #page3 {
+    height: 480vh !important;
+  }
+  #green-div {
+    height: 52vh;
+    margin-top: 2200px !important;
+  }
+  #about-me {
+    margin-top: -30rem !important;
+  }
+  .overlay p {
+    font-size: 15px !important;
+  }
+  #page4 #colon1 {
+    bottom: 13.5% !important;
+  }
+  #page4 #colon2 {
+    bottom: 7.7% !important;
+    right: 18% !important;
+  }
+  #footer {
+    height: 85vh !important;
+  }
+}
+
+/* MAX-WIDTH: 480px */
+@media only screen and (max-width: 480px) {
+  #nav {
+    padding: 0 30px;
+  }
+
+  #nav a {
+    font-size: 16px;
+    padding-right: 14px;
+  }
+  #nav img {
+    width: 150px;
+    height: 60px;
+  }
+
+  #arrow i {
+    font-size: 35px;
+  }
+
+  #cursor {
+    display: none;
+  }
+  #cursor-blur {
+    display: none;
+  }
+  #page1 {
+    height: 100vh;
+    align-items: center;
+  }
+  #page1 h1::before {
+    top: -2.5px;
+    left: -2.5px;
+  }
+  #page1 h1 {
+    font-size: 50px;
+    margin-bottom: 220px;
+    margin-left: -60px;
+    position: relative;
+    right: 2rem;
+    bottom: -1rem;
+  }
+  #page1 h2 {
+    font-size: 20px;
+    position: relative;
+    right: 7.5rem;
+    bottom: 13rem;
+  }
+  #page1 p {
+    width: 70%;
+    position: relative;
+    right: 6.5rem;
+    bottom: 13rem;
+  }
+  #scroller h4 {
+    font-size: 70px;
+    font-weight: 900;
+    margin-right: 10px;
+    -webkit-text-stroke: 1px white;
+    margin-bottom: 550px;
+    position: relative;
+    bottom: -2rem;
+  }
+  #about-me {
+    height: 60vh;
+    padding: 0 1px;
+    margin-top: -30rem !important;
+  }
+  #aboutin {
+    width: 85%;
+  }
+  #aboutin h3 {
+    font-size: 45px;
+  }
+  #aboutin p {
+    font-size: 16px;
+    line-height: 40px;
+  }
+  .skill-name {
+    font-size: 18px;
+  }
+  .skill-bar {
+    height: 22px;
+    margin-bottom: 50px;
+  }
+  .skills {
+    padding: 0 20px;
+    top: 0rem;
+  }
+  .skills h2 {
+    font-size: 45px;
+  }
+  #education {
+    padding: 0 20px;
+    height: 45vh;
+  }
+  #education h2 {
+    font-size: 45px;
+  }
+  #college {
+    width: 70%;
+    margin-top: -20px;
+  }
+  #school {
+    width: 70%;
+  }
+  #college p,
+  #school p {
+    font-size: 16px;
+  }
+  #page3 h2 {
+    font-size: 45px;
+  }
+  .card {
+    height: 50%;
+    width: 90%;
+  }
+  .overlay h4 {
+    font-size: 30px;
+    position: relative;
+    bottom: 3rem;
+  }
+  .overlay p {
+    position: relative;
+    bottom: 3rem;
+  }
+  #green-div {
+    margin-top: 1800px !important;
+  }
+  #green-div h4 {
+    font-size: 17px;
+    line-height: 30px;
+  }
+  #green-div img {
+    width: 15%;
+  }
+  #page4 {
+    margin-top: -30rem;
+  }
+  #page4 h4 {
+    font-size: 40px;
+  }
+  #page4 p {
+    margin-top: 20px;
+    font-size: 20px;
+    width: 70%;
+  }
+  #page4 #colon1 {
+    width: 60px;
+    left: 14%;
+    bottom: 13.6% !important;
+  }
+  #page4 #colon2 {
+    width: 60px;
+    bottom: 8% !important;
+    right: 18%;
+  }
+  #footer {
+    height: 70vh;
+    padding: 10px;
+    gap: 15px;
+    padding: 20px 0 0 50px;
+    flex-direction: column;
+    align-items: start;
+  }
+  #footer > img {
+    height: 50%;
+  }
+  #f1 h3 {
+    font-size: 42px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  #f2 h3,
+  #f3 h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+  }
+  #f4 h4 {
+    font-size: 18px;
+    line-height: 20px;
+  }
+  #f4 a {
+    font-size: 20px;
+    color: #30ab15;
+  }
+}
+
+/* MAX-WIDTH: 370px */
+@media only screen and (max-width: 380px) {
+  #page1 h1 {
+    font-size: 40px;
+    margin-bottom: 200px;
+    margin-left: -60px;
+  }
+  #page1 h2 {
+    font-size: 18px;
+    position: relative;
+    right: 6rem;
+    bottom: 12rem;
+  }
+  #page1 p {
+    width: 70%;
+    font-size: 18px;
+    position: relative;
+    right: 4.5rem;
+    bottom: 12rem;
+  }
+  #footer {
+    height: 70vh;
+    padding: 10px;
+    gap: 15px;
+    padding: 10px 0 0 30px;
+  }
+  #footer > img {
+    height: 50%;
+  }
+  #f1 h3 {
+    font-size: 35px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  #f2 h3,
+  #f3 h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+  #f4 h4 {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  #f4 a {
+    font-size: 18px;
+    color: #30ab15;
+  }
+  .overlay h4 {
+    margin-top: -1.5rem;
+  }
+  #page3 {
+    height: 560vh !important;
+  }
+  #page3 h2 {
+    padding-top: 4rem;
+    font-size: 32px;
+  }
+  #page4 h4 {
+    font-size: 35px;
+    position: relative;
+    top: -2em;
+  }
+  #green-div h4 {
+    font-size: 14px;
+  }
+  #page4 p {
+    font-size: 18px;
+  }
+  #page4 {
+    position: relative;
+    top: -8rem;
+  }
+  #colon1,
+  #colon2 {
+    display: none;
+  }
+}
+
+/* MIN-WIDTH: 1900px AND MAX-HEIGHT: 800px */
+@media only screen and (min-width: 1900px) and (max-height: 800px) {
+  .skills {
+    height: 150vh;
+    margin-top: 400px;
+  }
+  #page3 {
+    height: 350vh;
+    position: relative;
+    top: 50rem;
+  }
+  #page4 {
+    height: 160vh;
+    margin-top: 45rem;
+  }
+  .overlay h4 {
+    margin-top: -3rem;
+  }
+}
+
+/* MIN-WIDTH: 1900px */
+@media only screen and (min-width: 1900px) {
+  #mypic {
+    left: 80rem;
+    margin-top: -6rem;
+    height: 100%;
+  }
+  #aboutin p {
+    font-size: 25px;
+  }
+  #green-div {
+    margin-top: 800px;
+  }
+  #page3{
+    margin-top: -10rem;
+  }
+}
+
+/* MIN-WIDTH: 1900px AND MIN-HEIGHT: 860px */
+@media only screen and (min-width: 1900px) and (min-height: 860px) {
+  #education {
+    height: 100vh;
+  }
+  .skills {
+    margin-top: 25rem;
+  }
+}
+
+/* MIN-WIDTH: 1270px AND MAX-WIDTH: 1290px AND MIN-HEIGHT: 940px AND MAX-HEIGHT: 980px */
+@media only screen and (min-width: 1270px) and (max-width: 1290px) and (min-height: 940px) and (max-height: 980px) {
+  #mypic {
+    left: 38rem !important;
+    height: 90%;
+    right: 0;
+  }
+}
+
+/* MIN-WIDTH: 1500px AND MAX-WIDTH: 1600px */
+@media only screen and (min-width: 1500px) and (max-width: 1600px) {
+  #mypic {
+    left: 58rem !important;
+    height: 87%;
+  }
+}
+
+/* MIN-HEIGHT: 800px AND MAX-HEIGHT: 860px */
+@media only screen and (min-height: 800px) and (max-height: 860px) {
+  #mypic {
+    top: 5.7rem !important;
+  }
+}
+
+/* MIN-WIDTH: 300px AND MAX-WIDTH: 1499px */
+@media only screen and (min-width: 300px) and (max-width: 1499px) {
+  #card5,
+  #card6,
+  #card7,
+  #card8 {
+    background-position: top;
+  }
 }
