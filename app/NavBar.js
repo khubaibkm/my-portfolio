@@ -68,7 +68,7 @@ export default function NavBar() {
         <a
           className="resume"
           target="_blank"
-          href="https://drive.google.com/..."
+          href="https://drive.google.com/file/d/1h9RQW_XNarLU7EEYeaea0BMrB_WtP_GO/view"
           rel="noreferrer"
         >
           Resume
@@ -119,7 +119,7 @@ export default function NavBar() {
         <a
           className="resume"
           target="_blank"
-          href="https://drive.google.com/..."
+          href="https://drive.google.com/file/d/1h9RQW_XNarLU7EEYeaea0BMrB_WtP_GO/view"
           rel="noreferrer"
           onClick={closeMenu}
         >
