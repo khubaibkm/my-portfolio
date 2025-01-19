@@ -94,12 +94,6 @@ The website is deployed using [Vercel](https://vercel.com/). To deploy your own 
 
 For detailed deployment instructions, check the [Next.js Deployment Documentation](https://nextjs.org/docs/deployment).
 
-## Resources
-
-- [Next.js Documentation](https://nextjs.org/docs): Learn about the framework and its features.
-- [Vercel Documentation](https://vercel.com/docs): Deployment and hosting guides.
-- [CSS Tricks](https://css-tricks.com/): Tips and tricks for advanced styling.
-
 ## Feedback and Contributions
 
 I welcome feedback and suggestions for improvement. Feel free to open an issue or submit a pull request on GitHub. Let’s collaborate and make this portfolio even better!
@@ -109,6 +103,5 @@ I welcome feedback and suggestions for improvement. Feel free to open an issue o
 **Khubaib Ahmad**
 
 - [LinkedIn](https://www.linkedin.com/in/khubaibahmad122)
-- [GitHub](https://github.com/khubaibkm)
 
 ---
