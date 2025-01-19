@@ -1,9 +1,22 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "khubaib.live",
-  description: "Portfolio of Khubaib"
+  title: "Khubaib Ahmad | Web Developer Portfolio",
+  description: "Showcasing the projects, skills, and expertise of Khubaib Ahmad, a web developer specializing in Next.js, Node.js, and modern web technologies.",
+  openGraph: {
+    title: "Khubaib Ahmad | Web Developer Portfolio",
+    description: "Explore the professional portfolio of Khubaib Ahmad, featuring innovative projects and technical expertise.",
+    url: "https://your-portfolio-url.com",
+    images: ["https://your-portfolio-url.com/images/og-image.jpg"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Khubaib Ahmad | Web Developer Portfolio",
+    description: "Learn more about Khubaib Ahmad and his professional journey.",
+    images: ["https://your-portfolio-url.com/images/twitter-image.jpg"],
+  },
 };
+
 
 export default function RootLayout({ children }) {
   return (
