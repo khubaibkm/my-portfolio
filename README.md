@@ -5,7 +5,7 @@ This repository contains the source code for my personal portfolio website, buil
 ## Features
 
 ### Modern Tech Stack
-- **Framework:** Built with [Next.js 13](https://nextjs.org/) to leverage its powerful App Router and server-side rendering capabilities.
+- **Framework:** Built with [Next.js 15](https://nextjs.org/) to leverage its powerful App Router and server-side rendering capabilities.
 - **Styling:** Custom CSS for precise design and responsiveness.
 - **Fonts:** Optimized with [next/font](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to enhance performance.
 - **Deployment:** Hosted seamlessly on [Vercel](https://vercel.com/), ensuring fast and reliable performance.
@@ -103,3 +103,12 @@ For detailed deployment instructions, check the [Next.js Deployment Documentatio
 ## Feedback and Contributions
 
 I welcome feedback and suggestions for improvement. Feel free to open an issue or submit a pull request on GitHub. Let’s collaborate and make this portfolio even better!
+
+## Author
+
+**Khubaib Ahmad**
+
+- [LinkedIn](https://www.linkedin.com/in/khubaibahmad122)
+- [GitHub](https://github.com/khubaibkm)
+
+---
