@@ -37,6 +37,7 @@ export default function NavBar() {
         width={200}
         height={80}
         style={{ height: "auto" }}
+        unoptimized
       />
 
       {/* Desktop navlinks (visible on large screens) */}
