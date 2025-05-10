@@ -27,26 +27,26 @@ export default function HomePage() {
       });
     });
 
-// Navigation bar scroll
-gsap.fromTo(
-  "#nav",
-  {
-    backgroundColor: "transparent",
-    height: "150px", // Set the initial height of the navbar
-  },
-  {
-    backgroundColor: "black",
-    height: "100px", // Set the final height of the navbar
-    duration: 0.5,
-    scrollTrigger: {
-      trigger: "#nav",
-      scroller: "body",
-      start: "top top",
-      end: "bottom top",
-      scrub: 0.8,
-    },
-  }
-);
+    // Navigation bar scroll
+    gsap.fromTo(
+      "#nav",
+      {
+        backgroundColor: "transparent",
+        height: "150px", // Set the initial height of the navbar
+      },
+      {
+        backgroundColor: "black",
+        height: "100px", // Set the final height of the navbar
+        duration: 0.5,
+        scrollTrigger: {
+          trigger: "#nav",
+          scroller: "body",
+          start: "top top",
+          end: "bottom top",
+          scrub: 0.8,
+        },
+      }
+    );
 
 
     // color changing from page1 to page2
@@ -273,7 +273,7 @@ gsap.fromTo(
           <h2>Welcome to my Portfolio!</h2>
           <p>
             A Software developer from INDIA. <br />
-            Passionate about building web applications!
+            Passionate about building Optimized web applications!
           </p>
           <div id="mypic"></div>
           <div id="arr">
@@ -292,35 +292,37 @@ gsap.fromTo(
               <h4>WEB DEVELOPER.&nbsp;</h4>
               <h4>REACT.&nbsp;</h4>
               <h4>NODE.&nbsp;</h4>
-              <h4>STRAPI.&nbsp;</h4>
-              <h4>LINUX.&nbsp;</h4>
-              <h4>AWS.&nbsp;</h4>
+              <h4>HEADLESS CMS.&nbsp;</h4>
+              <h4>SEO.&nbsp;</h4>
               <h4>SQL.&nbsp;</h4>
+              <h4>AWS.&nbsp;</h4>
+              <h4>LINUX.&nbsp;</h4>
             </div>
             <div id="scroller1">
               <h4>WEB DEVELOPER.&nbsp;</h4>
               <h4>REACT.&nbsp;</h4>
               <h4>NODE.&nbsp;</h4>
-              <h4>STRAPI.&nbsp;</h4>
-              <h4>LINUX.&nbsp;</h4>
-              <h4>AWS.&nbsp;</h4>
+              <h4>HEADLESS CMS.&nbsp;</h4>
+              <h4>SEO.&nbsp;</h4>
               <h4>SQL.&nbsp;</h4>
+              <h4>AWS.&nbsp;</h4>
+              <h4>LINUX.&nbsp;</h4>
             </div>
           </div>
 
           <div id="about-me">
             <div id="aboutin">
               <h3>ABOUT ME</h3>
-              <p>
-              Full Stack Developer passionate about creating responsive and user-friendly web applications. Proficient in modern technologies like React.js, Node.js, and Firebase, with experience in building scalable solutions, real-time data storage, and user authentication. Skilled in GSAP for animations and adept at leveraging tools like Postman, Strapi, Sequelize, and cloud platforms like AWS. Strong foundation in collaborative development environments, MVC architecture, and database management with SQL.
-              </p>
+              <p><strong>Full Stack Developer</strong> skilled in building responsive, user-friendly, and optimized web applications using Next.js, Node.js, and Express. Experienced in creating scalable REST APIs, secure authentication systems, and integrating headless CMS like Strapi.</p>
+
+              <p>Currently working as an <strong>SDE 1</strong> at <strong>AlphaSaaS</strong>, contributing to SaaS product development. Proficient with tools like Postman, Sequelize, GSAP, and AWS, with a solid grasp of MVC architecture and SQL databases.</p>
             </div>
           </div>
 
           <div className="skills">
             <h2>My SKILLS</h2>
             <div className="skill">
-              <div className="skill-name">React JS</div>
+              <div className="skill-name">NEXT JS</div>
               <div className="skill-bar">
                 <div className="skill-level" data-width="80%"></div>
               </div>
@@ -332,7 +334,7 @@ gsap.fromTo(
               </div>
             </div>
             <div className="skill">
-              <div className="skill-name">C/C++</div>
+              <div className="skill-name">Headless CMS</div>
               <div className="skill-bar">
                 <div className="skill-level" data-width="70%"></div>
               </div>
@@ -344,31 +346,31 @@ gsap.fromTo(
               </div>
             </div>
             <div className="skill">
-              <div className="skill-name">Strapi</div>
+              <div className="skill-name">Technical SEO</div>
               <div className="skill-bar">
                 <div className="skill-level" data-width="70%"></div>
-              </div>
-            </div>
-            <div className="skill">
-              <div className="skill-name">Linux</div>
-              <div className="skill-bar">
-                <div className="skill-level" data-width="65%"></div>
               </div>
             </div>
             <div className="skill">
               <div className="skill-name">AWS</div>
               <div className="skill-bar">
+                <div className="skill-level" data-width="65%"></div>
+              </div>
+            </div>
+            <div className="skill">
+              <div className="skill-name">SQL</div>
+              <div className="skill-bar">
                 <div className="skill-level" data-width="55%"></div>
               </div>
             </div>
             <div className="skill">
-              <div className="skill-name">Google Firebase</div>
+              <div className="skill-name">Postman & Jira</div>
               <div className="skill-bar">
                 <div className="skill-level" data-width="70%"></div>
               </div>
             </div>
             <div className="skill">
-              <div className="skill-name">SQL</div>
+              <div className="skill-name">Figma</div>
               <div className="skill-bar">
                 <div className="skill-level" data-width="75%"></div>
               </div>
