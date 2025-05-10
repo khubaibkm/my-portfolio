@@ -336,7 +336,7 @@ export default function HomePage() {
             <div className="skill">
               <div className="skill-name">Headless CMS</div>
               <div className="skill-bar">
-                <div className="skill-level" data-width="70%"></div>
+                <div className="skill-level" data-width="80%"></div>
               </div>
             </div>
             <div className="skill">
@@ -348,25 +348,25 @@ export default function HomePage() {
             <div className="skill">
               <div className="skill-name">Technical SEO</div>
               <div className="skill-bar">
-                <div className="skill-level" data-width="70%"></div>
+                <div className="skill-level" data-width="75%"></div>
               </div>
             </div>
             <div className="skill">
               <div className="skill-name">AWS</div>
               <div className="skill-bar">
-                <div className="skill-level" data-width="65%"></div>
+                <div className="skill-level" data-width="55%"></div>
               </div>
             </div>
             <div className="skill">
               <div className="skill-name">SQL</div>
               <div className="skill-bar">
-                <div className="skill-level" data-width="55%"></div>
+                <div className="skill-level" data-width="65%"></div>
               </div>
             </div>
             <div className="skill">
-              <div className="skill-name">Postman & Jira</div>
+              <div className="skill-name">Sequelize</div>
               <div className="skill-bar">
-                <div className="skill-level" data-width="70%"></div>
+                <div className="skill-level" data-width="60%"></div>
               </div>
             </div>
             <div className="skill">
