@@ -30,7 +30,7 @@ export default function NavBar() {
   };
 
   return (
-    <div id="nav">
+    <div id="nav" className="backdrop-blur-md bg-black/20 shadow-lg">
       <Image
         src="/images/portLogo.png"
         alt="khubaib."

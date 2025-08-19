@@ -690,7 +690,7 @@ html {
 #footer {
   height: 40vh;
   width: 100%;
-  background: linear-gradient(to right top, #c6ff2a, #30ab15);
+  background: linear-gradient(to right, #1e293b, #0f172a);
   position: relative;
   display: flex;
   align-items: center;
@@ -722,7 +722,7 @@ html {
 }
 
 #footer i {
-  color: black;
+  color: #c6ff2a;
   font-weight: 500;
 }
 
@@ -730,7 +730,7 @@ html {
 #f3 h3 {
   font-size: 30px;
   text-transform: uppercase;
-  color: black;
+  color: white;
   font-weight: 900;
   margin-bottom: 25px;
 }
@@ -738,18 +738,18 @@ html {
 #f2 a,
 #f3 a {
   text-decoration: none;
-  color: black;
+  color: white;
 }
 
 #f2 a:hover,
 #f3 a:hover {
-  color: white;
+  color: #c6ff2a;
 }
 
 #f4 h4 {
   font-size: 18px;
   text-transform: uppercase;
-  color: black;
+  color: white;
   font-weight: 600;
   line-height: 25px;
   margin-bottom: 8px;
@@ -758,13 +758,13 @@ html {
 #f4 a {
   text-decoration: none;
   font-weight: 800;
-  color: #d2ff56;
+  color: #c6ff2a;
   font-size: 22px;
 }
 
 #f4 a:hover {
   color: white;
-  transition: all ease-out .3s;
+  transition: all ease-out 0.3s;
 }
 
 
@@ -947,7 +947,7 @@ html {
   }
   #f4 a {
     font-size: 22px;
-    color: #30ab15;
+    color: #c6ff2a;
   }
 }
 
@@ -1216,7 +1216,7 @@ html {
   }
   #f4 a {
     font-size: 20px;
-    color: #30ab15;
+    color: #c6ff2a;
   }
 }
 
@@ -1265,7 +1265,7 @@ html {
   }
   #f4 a {
     font-size: 18px;
-    color: #30ab15;
+    color: #c6ff2a;
   }
   .overlay h4 {
     margin-top: -1.5rem;
